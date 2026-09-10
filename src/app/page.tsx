@@ -1,361 +1,468 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X, Phone, MapPin, Clock } from 'lucide-react';
+import { Menu, X, MapPin, Phone, Clock, ArrowRight, Check, Star } from 'lucide-react';
+
+const services = [
+	{
+		title: 'PKW Führerschein',
+		subtitle: 'Für Anfänger & Wiedereinsteiger',
+		description:
+			'Gezielte Fahrstunden, ruhiges Lernen und klare Fortschritte — damit du Vertrauen im Straßenverkehr aufbaust.',
+		bullets: ['Persönlicher Lernplan', 'Flexible Stunden', 'Modernes Auto'],
+	},
+	{
+		title: 'Motorrad / Zweirad',
+		subtitle: 'A1 · A2 · A',
+		description:
+			'Sicheres Motorradfahren beginnt mit Technik, Ruhe und richtigem Feedback. Wir bauen dir die Sicherheit Schritt für Schritt auf.',
+		bullets: ['Sicherheitsorientiert', 'Praxisnah', 'Fahrtechnik im Fokus'],
+	},
+	{
+		title: 'B196 Zusatz',
+		subtitle: 'Schnell & unkompliziert',
+		description:
+			'Wenn du bereits Klasse B hast und schnell und unkompliziert Motorrad fahren möchtest, ist dieser Zusatz die ideale Lösung.',
+		bullets: ['Schneller Einstieg', 'Praktisch', 'Klar erklärt'],
+	},
+];
+
+const steps = [
+	'Kostenlose Erstberatung',
+	'Persönlicher Fahrplan',
+	'Praktische Fahrstunden',
+	'Bescheidene, sichere Fahrweise',
+];
+
+const testimonials = [
+	{
+		name: 'Elvis Avdic',
+		quote:
+			'Alles Bestens gelaufen. Ümit nimmt sich Zeit, hält sich an die Abstimmung und erklärt alles verständlich. Klare Weiterempfehlung.',
+	},
+	{
+		name: 'Hakan Basli',
+		quote:
+			'Vielen lieben Dank für die tollen Fahrstunden. Ich konnte mich von Anfang an sicher und gut begleitet fühlen.',
+	},
+	{
+		name: 'Elena Sommer',
+		quote:
+			'Super Fahrlehrer. Er lebt für seinen Beruf und setzt sich wirklich für seine Schüler ein. Ich habe viel gelernt und mich ernst genommen.',
+	},
+];
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  return (
-    <>
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <div className="flex flex-col">
-            <h1 className="text-lg font-normal text-gray-900 tracking-tight">Fahrschule am Ostendplatz</h1>
-            <p className="text-xs text-gray-600">Frankfurt</p>
-          </div>
-          
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-gray-900"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+	return (
+		<>
+			<nav className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-sm">
+				<div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
+					<div>
+						<p className="text-[11px] uppercase tracking-[0.25em] text-slate-500">
+							Fahrschule
+						</p>
+						<h1 className="text-lg font-semibold tracking-tight text-slate-900">
+							am Ostendplatz
+						</h1>
+					</div>
 
-          {/* Desktop menu */}
-          <div className="hidden md:flex gap-12">
-            <a href="#journey" className="text-sm text-gray-700 hover:text-gray-900 transition">Ablauf</a>
-            <a href="#angebote" className="text-sm text-gray-700 hover:text-gray-900 transition">Angebote</a>
-            <a href="#erfolg" className="text-sm text-gray-700 hover:text-gray-900 transition">Erfolg</a>
-            <a href="#kontakt" className="text-sm text-gray-700 hover:text-gray-900 transition">Kontakt</a>
-          </div>
+					<div className="hidden items-center gap-8 md:flex">
+						<a
+							href="#ueber"
+							className="text-sm text-slate-700 transition hover:text-slate-950"
+						>
+							Über uns
+						</a>
+						<a
+							href="#angebote"
+							className="text-sm text-slate-700 transition hover:text-slate-950"
+						>
+							Angebote
+						</a>
+						<a
+							href="#erfolg"
+							className="text-sm text-slate-700 transition hover:text-slate-950"
+						>
+							Erfolge
+						</a>
+						<a
+							href="#kontakt"
+							className="text-sm text-slate-700 transition hover:text-slate-950"
+						>
+							Kontakt
+						</a>
+					</div>
 
-          {/* CTA Button */}
-          <a href="https://wa.me/491777796291/?text=Hi%20%C3%9Cmit,%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20..."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:block bg-red-700 text-white px-5 py-2 text-sm hover:bg-red-800 transition"
-          >
-            Jetzt starten
-          </a>
-        </div>
+					<div className="hidden md:flex">
+						<a
+							href="https://wa.me/491777796291/?text=Hi%20%C3%9Cmit,%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20..."
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-2 bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-slate-700"
+						>
+							Jetzt starten
+						</a>
+					</div>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
-            <div className="flex flex-col gap-3 px-6 py-4">
-              <a href="#journey" className="text-gray-700 hover:text-gray-900 text-sm">Ablauf</a>
-              <a href="#angebote" className="text-gray-700 hover:text-gray-900 text-sm">Angebote</a>
-              <a href="#erfolg" className="text-gray-700 hover:text-gray-900 text-sm">Erfolg</a>
-              <a href="#kontakt" className="text-gray-700 hover:text-gray-900 text-sm">Kontakt</a>
-              <a href="https://wa.me/491777796291/?text=Hi%20%C3%9Cmit,%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20..."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-red-700 text-white px-4 py-2 text-center text-sm mt-2"
-              >
-                Jetzt starten
-              </a>
-            </div>
-          </div>
-        )}
-      </nav>
+					<button
+						className="rounded border border-slate-200 p-2 text-slate-900 md:hidden"
+						onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+						aria-label="Toggle menu"
+					>
+						{mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+					</button>
+				</div>
 
-      {/* Hero Section */}
-      <section id="home" className="bg-white pt-24 pb-32 px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto lg:mx-0 lg:max-w-none">
-          <div className="mb-8">
-            <p className="text-sm text-gray-600 mb-4">Willkommen bei der Fahrschule am Ostendplatz</p>
-            <h2 className="text-5xl lg:text-6xl font-light text-gray-900 leading-tight tracking-tight mb-8">
-              Vom nervösen Schüler zum sicheren Fahrer
-            </h2>
-            <p className="text-lg text-gray-700 max-w-xl leading-relaxed mb-8">
-              Das ist die Realität unserer Arbeit. Ümit versteht die Angst am Anfang. Er weiß, dass regelmäßige Fahrstunden, geduldiges Teaching und echte Unterstützung den Unterschied ausmachen. Nach wenigen Wochen sehen Sie die Veränderung selbst.
-            </p>
-          </div>
+				{mobileMenuOpen && (
+					<div className="border-t border-slate-200 bg-white md:hidden">
+						<div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-4 text-sm text-slate-700">
+							<a href="#ueber">Über uns</a>
+							<a href="#angebote">Angebote</a>
+							<a href="#erfolg">Erfolge</a>
+							<a href="#kontakt">Kontakt</a>
+							<a
+								href="https://wa.me/491777796291/?text=Hi%20%C3%9Cmit,%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20..."
+								target="_blank"
+								rel="noopener noreferrer"
+								className="mt-2 inline-flex items-center justify-center bg-slate-900 px-4 py-3 text-white"
+							>
+								Jetzt starten
+							</a>
+						</div>
+					</div>
+				)}
+			</nav>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a href="https://wa.me/491777796291/?text=Hi%20%C3%9Cmit,%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20..."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-red-700 text-white px-6 py-3 text-base hover:bg-red-800 transition w-full sm:w-auto text-center"
-            >
-              Anfrage stellen via WhatsApp
-            </a>
-            <a href="tel:+491777796291"
-              className="inline-block border border-gray-900 text-gray-900 px-6 py-3 text-base hover:bg-gray-50 transition w-full sm:w-auto text-center"
-            >
-              +49 177 7796291 anrufen
-            </a>
-          </div>
-        </div>
-      </section>
+			<main>
+				<section
+					id="ueber"
+					className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,#f3f4f6_0%,#ffffff_42%,#fbfbfb_100%)] px-5 py-16 sm:px-6 lg:px-8 lg:py-24"
+				>
+					<div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_1.2fr]">
+						<div>
+							<p className="mb-5 text-xs font-medium uppercase tracking-[0.28em] text-slate-500">
+								Willkommen
+							</p>
+							<h2 className="max-w-xl text-4xl font-light leading-tight tracking-[-0.05em] text-slate-900 sm:text-5xl lg:text-6xl">
+								Sicherheit, Ruhe und echte Praxis — genau so lernt man fahren.
+							</h2>
+							<p className="mt-6 max-w-lg text-lg leading-8 text-slate-700">
+								Gerne helfen wir dir, endlich mobil zu werden – egal ob du zuerst
+								mit dem Auto starten oder dich für Motorrad und Zweirad entscheidest.
+								Bei uns geht es nicht um Druck, sondern um Vertrauen und klare
+								Fortschritte.
+							</p>
 
-      {/* Services Section */}
-      <section id="angebote" className="bg-gray-50 py-32 px-6 lg:px-8 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20">
-            <h3 className="text-4xl lg:text-5xl font-light text-gray-900 mb-4">
-              Unsere Fokus
-            </h3>
-            <p className="text-lg text-gray-700 max-w-2xl">
-              Jeder Mensch lernt anders. Deshalb bieten wir maßgeschneiderte Programme für verschiedene Ziele und Situationen.
-            </p>
-          </div>
+							<div className="mt-8 flex flex-col gap-4 sm:flex-row">
+								<a
+									href="https://wa.me/491777796291/?text=Hi%20%C3%9Cmit,%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20..."
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center justify-center gap-2 bg-slate-900 px-6 py-3.5 text-base font-medium text-white transition hover:bg-slate-700"
+								>
+									Kostenlose Anfrage{' '}
+									<ArrowRight size={18} className="mt-0.5" />
+								</a>
+								<a
+									href="tel:+491777796291"
+									className="inline-flex items-center justify-center border border-slate-300 bg-white px-6 py-3.5 text-base font-medium text-slate-900 transition hover:border-slate-900"
+								>
+									+49 177 7796291
+								</a>
+							</div>
 
-          <div className="space-y-16">
-            {/* Auto */}
-            <div className="grid lg:grid-cols-3 gap-12">
-              <div>
-                <p className="text-sm text-gray-600 mb-2">Für Anfänger und Wiedereinsteiger</p>
-                <h4 className="text-2xl font-light text-gray-900 mb-4">PKW Führerschein</h4>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Klasse B. Du lernst von Grund auf, mit regelmäßigen Fahrstunden und durchdachtem Lernplan. Weniger Stress, mehr Fortschritt.
-                </p>
-              </div>
-              <div className="lg:col-span-2 bg-white p-8 border border-gray-200">
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Intensive Einzelfahrten mit kontinuierlichem Feedback</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Flexible Zeiten für Schule, Beruf oder Familie</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Fahrzeuge, die sich fahren lassen (nicht kämpfen lassen)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Klare Kosten, keine versteckten Gebühren</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+							<div className="mt-10 grid max-w-lg grid-cols-3 gap-4 text-left">
+								<div>
+									<p className="text-3xl font-light tracking-tight text-slate-900">
+										5/5
+									</p>
+									<p className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-500">
+										Bewertungen
+									</p>
+								</div>
+								<div>
+									<p className="text-3xl font-light tracking-tight text-slate-900">
+										3
+									</p>
+									<p className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-500">
+										Kurse
+									</p>
+								</div>
+								<div>
+									<p className="text-3xl font-light tracking-tight text-slate-900">
+										B196
+									</p>
+									<p className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-500">
+										Zusatz
+									</p>
+								</div>
+							</div>
+						</div>
 
-            {/* Zweirad */}
-            <div className="grid lg:grid-cols-3 gap-12">
-              <div>
-                <p className="text-sm text-gray-600 mb-2">Für Motorrad-Begeisterte</p>
-                <h4 className="text-2xl font-light text-gray-900 mb-4">Motorrad & Roller</h4>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Klasse A1, A2, oder A. Sicherheit ist hier nicht verhandelbar. Du lernst richtige Technik, nicht nur Balanceieren.
-                </p>
-              </div>
-              <div className="lg:col-span-2 bg-white p-8 border border-gray-200">
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Expert:innenunterricht von erfahrenen Fahrlehrern</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Sicherheitsfokus: Bremsen, Kurven, Gefahrenerkennung</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Moderne Maschinen für das Training</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Kleine Gruppen für besseres Lernen</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+						<div className="relative">
+							<div className="absolute -left-8 top-8 h-28 w-28 rounded-full bg-amber-200/60 blur-3xl" />
+							<div className="absolute -right-8 bottom-8 h-32 w-32 rounded-full bg-slate-200 blur-3xl" />
+							<div className="relative overflow-hidden border border-slate-200 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+								<img
+									src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80"
+									alt="Auto auf der Straße"
+									className="h-[520px] w-full object-cover"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-slate-900/10 to-transparent" />
+								<div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+									<div className="inline-flex items-center gap-2 border border-white/30 bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+										<span className="h-2 w-2 rounded-full bg-emerald-400" />
+										Fahrstunden nach Vereinbarung
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 
-            {/* B196 */}
-            <div className="grid lg:grid-cols-3 gap-12">
-              <div>
-                <p className="text-sm text-gray-600 mb-2">Schnelle Lösung für Autofahrer</p>
-                <h4 className="text-2xl font-light text-gray-900 mb-4">B196 Zusatz</h4>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Du hast Klasse B, möchtest aber Motorräder fahren? Das geht schneller, als du denkst. Nur wenige Stunden, keine große Prüfung.
-                </p>
-              </div>
-              <div className="lg:col-span-2 bg-white p-8 border border-gray-200">
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Schnell: 3–5 Fahrstunden für Sicherheit</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Günstiger als ein voller Motorrad-Führerschein</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Keine Prüfung, nur praktisches Training</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-700 font-light mt-1">—</span>
-                    <span>Rechtlich valide, europaweit gültig</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+				<section
+					id="angebote"
+					className="bg-slate-950 px-5 py-20 text-white sm:px-6 lg:px-8"
+				>
+					<div className="mx-auto max-w-7xl">
+						<div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+							<div>
+								<p className="text-xs uppercase tracking-[0.28em] text-slate-400">
+									Angebote
+								</p>
+								<h3 className="mt-3 text-3xl font-light tracking-tight text-white sm:text-4xl">
+									Fahrausbildung für dein Ziel
+								</h3>
+							</div>
+							<p className="max-w-xl text-slate-300">
+								Jedes Training wird an deinen Lernstil angepasst. Wir nehmen uns Zeit,
+								erklären verständlich und helfen dir, mit Sicherheit auf die Straße zu
+								gehen.
+							</p>
+						</div>
 
-      {/* Success Stories */}
-      <section id="erfolg" className="py-32 px-6 lg:px-8 bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20">
-            <h3 className="text-4xl lg:text-5xl font-light text-gray-900 mb-4">
-              Was passiert nach wenigen Wochen
-            </h3>
-            <p className="text-lg text-gray-700 max-w-2xl">
-              Schüler berichten von der Veränderung, die sie selbst bemerkt haben. Das ist das Ergebnis von Geduld und Struktur.
-            </p>
-          </div>
+						<div className="grid gap-6 lg:grid-cols-3">
+							{services.map((service) => (
+								<div
+									key={service.title}
+									className="border border-slate-800 bg-slate-900 p-7 transition hover:border-slate-600 hover:bg-slate-900/90"
+								>
+									<p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+										{service.subtitle}
+									</p>
+									<h4 className="mt-6 text-2xl font-light tracking-tight text-white">
+										{service.title}
+									</h4>
+									<p className="mt-4 text-base leading-7 text-slate-300">
+										{service.description}
+									</p>
+									<ul className="mt-6 space-y-3 text-sm text-slate-200">
+										{service.bullets.map((bullet) => (
+											<li key={bullet} className="flex items-start gap-3">
+												<Check size={16} className="mt-0.5 text-amber-300" />
+												<span>{bullet}</span>
+											</li>
+										))}
+									</ul>
+								</div>
+							))}
+						</div>
+					</div>
+				</section>
 
-          <div className="space-y-12">
-            {/* Story 1 */}
-            <div className="border-l-2 border-red-700 pl-8 py-6">
-              <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                "Alles Bestens gelaufen. Ümit nimmt sich Zeit und hält sich an die Abstimmung. Klare Weiterempfehlung."
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Elvis Avdic</strong> — Führerschein bestanden
-              </p>
-            </div>
+				<section className="bg-white px-5 py-20 sm:px-6 lg:px-8">
+					<div className="mx-auto max-w-7xl">
+						<div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+							<div>
+								<p className="text-xs uppercase tracking-[0.28em] text-slate-500">
+								Warum wir
+								</p>
+								<h3 className="mt-3 text-3xl font-light tracking-tight text-slate-900 sm:text-4xl">
+									So funktioniert gutes Lernen
+								</h3>
+							</div>
 
-            {/* Story 2 */}
-            <div className="border-l-2 border-red-700 pl-8 py-6">
-              <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                "Vielen lieben Dank für die tollen Fahrstunden, ich kann dich nur weiterempfehlen."
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Hakan Basli</strong> — Führerschein bestanden
-              </p>
-            </div>
+							<div className="grid gap-4 sm:grid-cols-2">
+								{steps.map((step, index) => (
+									<div
+										key={step}
+										className="flex items-center gap-4 border border-slate-200 bg-slate-50 p-4"
+									>
+										<div className="flex h-10 w-10 items-center justify-center bg-slate-900 text-sm font-medium text-white">
+											{index + 1}
+										</div>
+										<p className="text-sm text-slate-700">{step}</p>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				</section>
 
-            {/* Story 3 */}
-            <div className="border-l-2 border-red-700 pl-8 py-6">
-              <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                "Super Fahrlehrer. Er lebt für seinen Beruf und das merkt man! Er setzt sich für seine Schüler ein."
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Elena Sommer</strong> — Führerschein bestanden
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+				<section
+					id="erfolg"
+					className="bg-slate-100 px-5 py-20 sm:px-6 lg:px-8"
+				>
+					<div className="mx-auto max-w-7xl">
+						<div className="mb-12">
+							<p className="text-xs uppercase tracking-[0.28em] text-slate-500">
+								Erfolge
+							</p>
+							<h3 className="mt-3 text-3xl font-light tracking-tight text-slate-900 sm:text-4xl">
+								Das sagen unsere Schüler
+							</h3>
+						</div>
 
-      {/* Contact Section */}
-      <section id="kontakt" className="py-32 px-6 lg:px-8 bg-gray-50 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20">
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-4xl lg:text-5xl font-light text-gray-900 mb-12">
-                Direkter Kontakt
-              </h3>
-              
-              <div className="space-y-8">
-                <div>
-                  <p className="text-sm text-gray-600 mb-2">Telefon</p>
-                  <a href="tel:+491777796291" className="text-xl text-gray-900 hover:text-red-700 transition">
-                    +49 177 7796291
-                  </a>
-                </div>
+						<div className="grid gap-6 lg:grid-cols-3">
+							{testimonials.map((item) => (
+								<article
+									key={item.name}
+									className="bg-white p-7 shadow-[0_20px_40px_rgba(15,23,42,0.04)] ring-1 ring-slate-200"
+								>
+									<div className="mb-5 flex gap-1 text-amber-500">
+										{[...Array(5)].map((_, idx) => (
+											<Star key={idx} size={18} fill="currentColor" />
+										))}
+									</div>
+									<p className="text-base leading-7 text-slate-700">
+										“{item.quote}”
+									</p>
+									<p className="mt-6 text-sm font-medium uppercase tracking-[0.2em] text-slate-500">
+										{item.name}
+									</p>
+								</article>
+							))}
+						</div>
+					</div>
+				</section>
 
-                <div>
-                  <p className="text-sm text-gray-600 mb-2">Sofort erreichen</p>
-                  <a href="https://wa.me/491777796291/?text=Hi%20%C3%9Cmit,%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20..."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xl text-gray-900 hover:text-red-700 transition"
-                  >
-                    WhatsApp schreiben
-                  </a>
-                </div>
+				<section
+					id="kontakt"
+					className="bg-white px-5 py-20 sm:px-6 lg:px-8"
+				>
+					<div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+						<div>
+							<p className="text-xs uppercase tracking-[0.28em] text-slate-500">
+								Kontakt
+							</p>
+							<h3 className="mt-3 text-3xl font-light tracking-tight text-slate-900 sm:text-4xl">
+								Wir helfen dir gerne weiter
+							</h3>
+							<div className="mt-8 space-y-6 text-slate-700">
+								<div className="flex items-start gap-4">
+									<div className="flex h-11 w-11 items-center justify-center border border-slate-200 bg-slate-50">
+										<Phone size={18} />
+									</div>
+									<div>
+										<p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+											Telefon
+										</p>
+										<a
+											href="tel:+491777796291"
+											className="mt-2 inline-block text-xl text-slate-900 hover:text-slate-600"
+										>
+											+49 177 7796291
+										</a>
+									</div>
+								</div>
 
-                <div>
-                  <p className="text-sm text-gray-600 mb-2">Standort</p>
-                  <p className="text-lg text-gray-900">
-                    Frankfurt am Main<br/>
-                    Deutschland
-                  </p>
-                </div>
+								<div className="flex items-start gap-4">
+									<div className="flex h-11 w-11 items-center justify-center border border-slate-200 bg-slate-50">
+										<MapPin size={18} />
+									</div>
+									<div>
+										<p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+											Standort
+										</p>
+										<p className="mt-2 text-lg text-slate-900">
+											Frankfurt am Main
+										</p>
+									</div>
+								</div>
 
-                <div>
-                  <p className="text-sm text-gray-600 mb-2">Zeiten</p>
-                  <p className="text-lg text-gray-900">
-                    Nach Vereinbarung<br/>
-                    Flexibel für dich
-                  </p>
-                </div>
-              </div>
-            </div>
+								<div className="flex items-start gap-4">
+									<div className="flex h-11 w-11 items-center justify-center border border-slate-200 bg-slate-50">
+										<Clock size={18} />
+									</div>
+									<div>
+										<p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+											Termine
+										</p>
+										<p className="mt-2 text-lg text-slate-900">
+											Nach Vereinbarung
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
 
-            {/* Social & Info */}
-            <div>
-              <h3 className="text-lg font-light text-gray-900 mb-8">
-                Folge uns für Einblicke
-              </h3>
-              <div className="space-y-4 mb-12">
-                <a href="https://www.facebook.com/Fahrschule-am-Ostendplatz-321790862056753"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-gray-700 hover:text-red-700 transition"
-                >
-                  Facebook →
-                </a>
-                <a href="https://www.instagram.com/fahrschule.am.ostendplatz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-gray-700 hover:text-red-700 transition"
-                >
-                  Instagram →
-                </a>
-              </div>
+						<div className="border border-slate-200 bg-slate-50 p-7">
+							<p className="text-xs uppercase tracking-[0.28em] text-slate-500">
+								So kommst du zu uns
+							</p>
+							<h4 className="mt-4 text-2xl font-light tracking-tight text-slate-900">
+								Direkt loslegen
+							</h4>
+							<p className="mt-4 text-base leading-7 text-slate-700">
+								Wenn du auf der Suche nach einer Fahrstunde bist, die wirklich zu dir
+								passt, schick uns einfach eine Nachricht. Wir sagen dir, was für dich
+								sinnvoll ist und wie du am besten startest.
+							</p>
+							<a
+								href="https://wa.me/491777796291/?text=Hi%20%C3%9Cmit,%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20..."
+								target="_blank"
+								rel="noopener noreferrer"
+								className="mt-8 inline-flex items-center gap-2 bg-slate-900 px-6 py-3.5 text-base font-medium text-white transition hover:bg-slate-700"
+							>
+								WhatsApp kontaktieren{' '}
+								<ArrowRight size={18} className="mt-0.5" />
+							</a>
 
-              <div className="border-t border-gray-300 pt-8">
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Die erste Fahrstunde ist oft die nervöseste. Das verstehen wir. Die zweite ist schon besser. Nach ein paar Wochen fragst du dich, warum du so nervös warst.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+							<div className="mt-8 border-t border-slate-200 pt-6">
+								<p className="text-sm text-slate-600">Social</p>
+								<div className="mt-4 flex gap-4 text-sm text-slate-700">
+									<a
+										href="https://www.facebook.com/Fahrschule-am-Ostendplatz-321790862056753"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Facebook
+									</a>
+									<a
+										href="https://www.instagram.com/fahrschule.am.ostendplatz"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Instagram
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-16 px-6 lg:px-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12 mb-12 pb-12 border-b border-gray-800">
-            <div>
-              <h5 className="font-light text-white mb-4">Fahrschule am Ostendplatz</h5>
-              <p className="text-sm text-gray-400">Professionelle Fahrausbildung in Frankfurt.</p>
-            </div>
-            <div>
-              <h5 className="font-light text-white mb-4">Angebote</h5>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#angebote" className="text-gray-400 hover:text-white transition">PKW Führerschein</a></li>
-                <li><a href="#angebote" className="text-gray-400 hover:text-white transition">Motorrad</a></li>
-                <li><a href="#angebote" className="text-gray-400 hover:text-white transition">B196 Zusatz</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-light text-white mb-4">Kontakt</h5>
-              <ul className="space-y-2 text-sm">
-                <li><a href="tel:+491777796291" className="text-gray-400 hover:text-white transition">+49 177 7796291</a></li>
-                <li><a href="https://wa.me/491777796291" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">WhatsApp</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="text-sm text-gray-500 text-center">
-            <p>&copy; 2026 Fahrschule am Ostendplatz. Alle Rechte vorbehalten.</p>
-          </div>
-        </div>
-      </footer>
-    </>
-  );
+			<footer className="bg-slate-950 px-5 py-10 text-slate-300 sm:px-6 lg:px-8">
+				<div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+					<div>
+						<p className="text-lg font-medium text-white">Fahrschule am Ostendplatz</p>
+						<p className="mt-1 text-sm text-slate-400">Frankfurt am Main</p>
+					</div>
+					<div className="flex flex-col gap-2 text-sm text-slate-400 sm:flex-row sm:items-center sm:gap-6">
+						<a href="#angebote" className="hover:text-white">
+							Angebote
+						</a>
+						<a href="#erfolg" className="hover:text-white">
+							Erfolge
+						</a>
+						<a href="#kontakt" className="hover:text-white">
+							Kontakt
+						</a>
+					</div>
+				</div>
+			</footer>
+		</>
+	);
 }
