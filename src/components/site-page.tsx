@@ -48,15 +48,14 @@ function Section({ id, children, className = '' }: SectionProps) {
 function LogoMark() {
 	return (
 		<div className="flex items-center gap-3">
-			<div className="grid h-12 w-12 place-items-center rounded-full border border-[color:var(--border)] bg-white shadow-[0_10px_25px_rgba(15,23,42,0.06)]" aria-hidden="true">
-				<div className="h-6 w-0.5 bg-[color:var(--brand-green)]" />
-			</div>
-			<div className="leading-tight">
-				<p className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[color:var(--brand-green)]">
-					FAHRSCHULE
-				</p>
-				<p className="text-sm font-semibold text-[color:var(--ink)] sm:text-base">am Ostendplatz</p>
-			</div>
+			<Image
+				src="/logo.svg"
+				alt="Fahrschule am Ostendplatz"
+				width={180}
+				height={110}
+				priority
+				className="h-12 w-auto sm:h-14"
+			/>
 		</div>
 	);
 }
@@ -144,7 +143,7 @@ function Hero() {
 
 					<div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
 						<PrimaryButton href="#kontakt">Jetzt anmelden</PrimaryButton>
-						<SecondaryButton href="#klassen">Führerscheinklassen entdecken</SecondaryButton>
+						<PrimaryButton href="#klassen">Führerscheinklassen entdecken</PrimaryButton>
 					</div>
 
 					<div className="mt-6 flex flex-col gap-2 text-sm text-white/75 sm:flex-row sm:items-center sm:gap-4">

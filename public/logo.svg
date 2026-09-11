@@ -1,0 +1,19 @@
+<svg width="180" height="110" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fahrschule am Ostendplatz Logo</title>
+  <desc id="desc">Green arc with black traffic tower and the text Fahrschule am Ostendplatz.</desc>
+  <rect width="180" height="110" fill="white"/>
+  <path d="M28 58C35 31 63 17 90 17C117 17 145 31 152 58" stroke="#46B23E" stroke-width="8" stroke-linecap="round"/>
+  <rect x="47" y="61" width="86" height="26" rx="4" fill="#0B0B0B"/>
+  <rect x="84" y="16" width="12" height="45" fill="#0B0B0B"/>
+  <rect x="87" y="8" width="6" height="10" fill="#0B0B0B"/>
+  <rect x="78" y="53" width="24" height="8" fill="#0B0B0B"/>
+  <rect x="79" y="46" width="22" height="6" fill="#0B0B0B"/>
+  <rect x="80" y="39" width="20" height="5" fill="#0B0B0B"/>
+  <circle cx="112" cy="52" r="6" fill="#0B0B0B"/>
+  <circle cx="126" cy="52" r="6" fill="#0B0B0B"/>
+  <rect x="108" y="57" width="22" height="4" fill="#0B0B0B"/>
+  <polygon points="57,51 71,51 64,39" fill="none" stroke="#0B0B0B" stroke-width="2"/>
+  <polygon points="72,51 87,51 79.5,39" fill="none" stroke="#0B0B0B" stroke-width="2"/>
+  <text x="90" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="3" fill="white">FAHRSCHULE</text>
+  <text x="90" y="101" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#2a2a2a">am Ostendplatz</text>
+</svg>
