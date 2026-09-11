@@ -47,14 +47,13 @@ function Section({ id, children, className = '' }: SectionProps) {
 
 function LogoMark() {
 	return (
-		<div className="relative h-14 w-48 shrink-0 sm:h-16 sm:w-56">
-			<Image
-				src="/logo.png"
+		<div className="flex shrink-0 items-center">
+			<img
+				src="/logo.svg"
 				alt="Fahrschule am Ostendplatz"
-				fill
-				priority
-				sizes="(max-width: 640px) 192px, 224px"
-				className="object-contain object-left"
+				width="260"
+				height="160"
+				className="h-14 w-auto max-w-none object-contain object-left sm:h-16"
 			/>
 		</div>
 	);
