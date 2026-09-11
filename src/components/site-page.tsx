@@ -78,7 +78,7 @@ function SecondaryButton({ href, children, className = '', external = false }: {
 			href={href}
 			target={external ? '_blank' : undefined}
 			rel={external ? 'noopener noreferrer' : undefined}
-			className={`inline-flex items-center justify-center gap-2 rounded-full border border-[color:var(--border)] bg-white px-5 py-3 text-sm font-semibold text-[color:var(--ink)] transition hover:border-[color:var(--brand-green)] hover:text-[color:var(--brand-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-green)] focus-visible:ring-offset-2 ${className}`}
+			className={`inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--brand-green)] px-5 py-3 text-sm font-semibold text-white shadow-[0_14px_35px_rgba(70,178,62,0.22)] transition hover:-translate-y-0.5 hover:bg-[#3fa736] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-green)] focus-visible:ring-offset-2 ${className}`}
 		>
 			{children}
 		</a>
